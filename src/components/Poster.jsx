@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react'
+import '../Styles/Poster.scss'
 import DropDownPro from '../components/DropDownPro'
-import { ArrowButton, FacebookIcon, IWDLogoWhite, InstaIcon } from './Icons';
+import { ArrowButton, IWDLogoWhite } from './Icons';
 import Woman from '../assets/20230709_103552.jpg';
 import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from 'react-component-export-image';
 import { useScreenshot } from 'use-react-screenshot'
@@ -197,21 +198,16 @@ const Poster = () => {
           eventSource={document.getElementById("cover-cover")}
           eventPrefix="client"
         >
-          <div className={`markings absolute top-0 right-0 w-full h-full flex flex-col items-center justify-between xs:px-4 md:px-10 ${scalee ? 'scale-50' : ''}`}>
+          <div className={`markings absolute top-0 right-0 w-full h-full flex flex-col items-center justify-between xs:px-4 md:px-10 `}>
 
             <div className="top-side flex flex-col items-center text-white font-Rufina text-center xs:py-3 md:pt-[30px] md:pb-0 xs:gap-2 md:gap-4">
-              <img src="/assets/gui.svg" alt="" className= {`xs:w-14 md:w-[6.5rem] ${ browserName == 'Mobile Safari' ? 'scale-50' : ''} `} />
+              <img src="/assets/gui.svg" alt="" className= {`top-g-icon `} />
               
               <h1 className="font-medium font-Rufina xs:leading-7 md:leading-[3.25rem] xs:text-[24px] md:text-[2.8dvw] shadie">SPIRITED NETWORK</h1>
             </div>
 
             <div className="mid w-full flex flex-col items-end justify-end text-white xs:text-[10px] md:text-sm font-Satoshi font-semibold text-left xs:gap-1 md:gap-2">
-              {
-                browserName == 'Mobile Safari' ?
-                (<h6 className=' bg-white text-black xs:px-2 md:px-3 '>#IWD2024</h6>)
-                :
-                (<img src="/assets/Frame-48.svg" alt="" className=' xs:h-3 md:h-5' />)
-              }
+              <h6 className=' bg-white text-black xs:px-2 md:px-3 '>#IWD2024</h6>
               
               {/* <h6 className=' bg-accent text-white xs:px-2 md:px-3'>#INSPIREINCLISION</h6> */}
               <img src="/assets/Frame-47.svg" alt="" className=' xs:h-3 md:h-5' />
@@ -225,9 +221,7 @@ const Poster = () => {
                 <p className='xs:max-w-[95%] xs:text-[8px] md:text-base leading-3 mb-2'>{resolve}</p>
                 <div className="linkz flex flex-col gap-1">
                   <div className="flex flex-row items-center gap-1 font-xs">
-                    {/* <img src="/assets/Instagram.svg" alt="" className='xs:w-4 md:w-6 xs:h-4 md:h-6' /> */}
-                    <InstaIcon className={'xs:w-4 md:w-6 xs:h-4 md:h-6'} />
-                    <FacebookIcon />
+                    <img src="/assets/Instagram.svg" alt="" className='xs:w-4 md:w-6 xs:h-4 md:h-6' />
                     <img src="/assets/Facebook.svg" alt="" className='xs:w-4 md:w-6 xs:h-4 md:h-6' />
                     <img src="/assets/TwitterX.svg" alt="" className='xs:w-4 md:w-6 xs:h-4 md:h-6' />
                     <img src="/assets/Guinnessngrplc.svg" alt="" className=' xs:h-2 md:h-3' />
