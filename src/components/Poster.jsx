@@ -9,6 +9,7 @@ import { toast } from 'sonner';
 import html2canvas from 'html2canvas';
 import { browserName, CustomView } from 'react-device-detect';
 import domtoimage from 'dom-to-image';
+import imagePro from '../assets/OverlayPro.png'
 
 
 
@@ -17,6 +18,8 @@ const Poster = () => {
   const PosterRef = useRef();
   const inputFile = useRef(null);
 
+  var tCtx;
+  var img;
 
   const [imageSrc, setImageSrc] = useState(null);
   const [scalee, setscalee] = useState(false);
@@ -77,18 +80,18 @@ const Poster = () => {
     inputFile.current.click();
   };
 
-  const yawaDey = (e) => {
-    console.log(e);
-    const link = document.createElement("a")
-    link.setAttribute("download", "canvas.png")
-    link.setAttribute(
-      "href",
-      document
-      .getElementByI("cover-cover")
-      // .toDataURL("image/png")
-      .replace("image/png", "image/octet-stream")
-    )
-    link.click()
+  const textToImg = (e) => {
+    img = document.createElement('image');
+    img.id = "my-image";
+    document.getElementsByClassName('output')[0].appendChild(img);
+    var canvas = document.createElement('canvas');
+    tCtx = canvas.getContext("2d");
+    tCtx.textAlign = "center";
+    canvas.height = 400;
+    canvas.width= 360;
+    document.getElementsByClassName('output')[0].appendChild(canvas);
+    tCtx.fillText(document.getElementsByClassName('my-input')[0].value, 10, 40);
+    img.src = tCtx.canvas.toDataURL();
   }
 
 
@@ -105,7 +108,7 @@ const Poster = () => {
   
   return (
     <>
-    <main className='w-full h-max md:h-[750px] grid grid-cols-1 md:grid-cols-2 gap-[5rem]  px-[6%]'>
+    <main className='w-full h-max md:h-[850px] grid grid-cols-1 md:grid-cols-2 gap-[5rem]  px-[6%]'>
 
         <div className="form w-full h-full flex flex-col justify-between xs:mb-10 md:mb-0">
           <div className="relative up flex flex-col xs:gap-6 md:gap-10">
@@ -133,8 +136,8 @@ const Poster = () => {
             </button>
 
             <input type="file" id='file' accept="image/*" onChange={handleImageChange} className='hidden' ref={inputFile} />
-            <a  href ={image} alt={'Screenshot'} className='idden' download={true} id='imagi' />
-            <a  src={image} alt={'Screenshot'} className='idden' download={true} id='imagoi' />
+            <a  href ={image} alt={'Screenshot'} className='hidden' download={true} id='imagi' />
+            <a  src={image} alt={'Screenshot'} className='hidden' download={true} id='imagoi' />
 
             <button type="text"  className='w-full xs:h-[60px] md:h-[85px] px-8 bg-accent focus:bg-brown transition-all duration-300 ease-in-out flex flex-row items-center justify-between text-white xs:text-lg md:text-[30px] font-semibold font-Satoshi' 
               onClick={(e)=> {
@@ -157,29 +160,19 @@ const Poster = () => {
 
                 else {
                   if(window.innerWidth < 480) {
-                    // if(browserName == 'Mobile Safari'){
-                    //   setscalee(true)
-                    // }
-                    // if(browserName == 'Mobile Safari') {
                       // handleDownloadImage();
-                    //  setTimeout(() => {
-                      getImage();
-                    //  }, 500);
                       // domToImg()
+                      getImage();
                       setTimeout(() => {
                         document.getElementById('imagi').click();
                       }, 1200);
-                      // setTimeout(() => {
-                      //   document.getElementById('imagi').click();
-                      //   setscalee(false)
-                      // }, 1200);
-                    // yawaDey(e);
                   }
                   else {
                     // exportComponentAsJPEG(PosterRef, {fileName: `${firstName}-IWD.jpeg`, backgroundColor: '#00000000'} )  
                     // handleDownloadImage(); 
-                    getImage()
                     // domToImg()
+
+                    getImage()
                     setTimeout(() => {
                       document.getElementById('imagi').click();
                     }, 1200);
@@ -189,37 +182,38 @@ const Poster = () => {
             >
               Download your poster <ArrowButton  className={'rotate-180 xs:w-6 md:w-10'}/>
             </button>
+
           </div>
         </div>
 
         {/*////////////////////////////////// ds ////////////////////////////*/}
 
-        <div className={`image relative w-full xs:h-[450px] md:h-[750px]`} style={{backgroundImage: `url(${ imageFile ? imageFile : Woman})`}} id='cover-cover' ref={PosterRef} 
-          eventSource={document.getElementById("cover-cover")}
-          eventPrefix="client"
-        >
-          <div className={`markings absolute top-0 right-0 w-full h-full flex flex-col items-center justify-between xs:px-4 md:px-10 `}>
+        <div className={`image output relative w-full xs:h-[400px] sm:h-[450px] md:h-[850px]`} style={{backgroundImage: `url(${ imageFile ? imageFile : Woman})`}} id='cover-cover' ref={PosterRef}  >
+          <img src={imagePro} alt="" className='absolute top-0 left-0 w-full h-full' />
+          <div className={`markings z-30 absolute top-0 right-0 w-full h-full flex flex-col items-center justify-between xs:px-[9.5dvw] md:px-[3.5dvw] `}>
 
-            <div className="top-side flex flex-col items-center text-white font-Rufina text-center xs:py-3 md:pt-[30px] md:pb-0 xs:gap-2 md:gap-4">
+            <div className="top-side flex flex-col items-center text-white font-Rufina text-center xs:py-3 md:pt-[30px] md:pb-0 xs:gap-2 md:gap-4 opacity-0">
               <img src="/assets/gui.svg" alt="" className= {`top-g-icon `} />
               
-              <h1 className="font-medium font-Rufina xs:leading-7 md:leading-[3.25rem] xs:text-[24px] md:text-[2.8dvw] shadie">SPIRITED NETWORK</h1>
+              <h1 className="font-medium font-Rufina xs:leading-7 md:leading-[3.25rem] xs:text-[24px] md:text-[2.8dvw] shade">SPIRITED NETWORK</h1>
             </div>
 
-            <div className="mid w-full flex flex-col items-end justify-end text-white xs:text-[10px] md:text-sm font-Satoshi font-semibold text-left xs:gap-1 md:gap-2">
-              <h6 className=' bg-white text-black xs:px-2 md:px-3 '>#IWD2024</h6>
+            <div className="mid w-full flex flex-col items-end justify-end text-white xs:text-[10px] md:text-sm font-Satoshi font-semibold text-left xs:gap-1 md:gap-2 opacity-0">
+              <h1 className=' bg-white text-black xs:px-2 md:px-3 '>#IWD2024</h1>
               
               {/* <h6 className=' bg-accent text-white xs:px-2 md:px-3'>#INSPIREINCLISION</h6> */}
               <img src="/assets/Frame-47.svg" alt="" className=' xs:h-3 md:h-5' />
             </div>
 
             <div className="bottom-side w-full flex flex-row items-center justify-between text-white xs:mb-[25px] md:mb-[50px]">
+              
               <aside className='flex flex-col xs:gap-[2px] md:gap-[6px]'>
                 <h2 className="font-Rufina xs:text-2xl md:text-[2.75em] font-medium xs:leading-6 md:leading-[2.75rem] uppercase mb-1">
                   { firstName || "CHRISTIANAH"} <br />{ lastName || "OGUNYOOLA"}
                 </h2>
-                <p className='xs:max-w-[95%] xs:text-[8px] md:text-base leading-3 mb-2'>{resolve}</p>
-                <div className="linkz flex flex-col gap-1">
+                <p className=' xs:text-[8px] md:text-base leading-3 mb-4'>{resolve}</p>
+
+                <div className="linkz flex flex-col gap-1 opacity-0">
                   <div className="flex flex-row items-center gap-1 font-xs">
                     <img src="/assets/Instagram.svg" alt="" className='xs:w-4 md:w-6 xs:h-4 md:h-6' />
                     <img src="/assets/Facebook.svg" alt="" className='xs:w-4 md:w-6 xs:h-4 md:h-6' />
@@ -238,7 +232,7 @@ const Poster = () => {
 
               </aside>
 
-              <aside className='h-full flex flex-col items-end justify-end xs:gap-2 md:gap-3'>
+              <aside className='h-full flex flex-col items-end justify-end xs:gap-2 md:gap-3 opacity-0'>
                   <div className="flex w-full flex-row items-center gap-2">
                     <img src="/assets/whiteee.svg" alt="" className=' xs:w-5 md:w-8 xs:h-5 md:h-8' />
                     <img src="/assets/IWD2024.svg" alt="" className=' xs:h-2 md:h-3' />
@@ -249,8 +243,6 @@ const Poster = () => {
             </div>
 
           </div>
-
-          <hr className='shade' />
         </div>
         
     </main>
