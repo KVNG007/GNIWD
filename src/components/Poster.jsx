@@ -163,12 +163,12 @@ const Poster = () => {
                     // if(browserName == 'Mobile Safari') {
                       // handleDownloadImage();
                     //  setTimeout(() => {
-                    //   getImage();
+                      getImage();
                     //  }, 500);
                       // domToImg()
-                      // setTimeout(() => {
-                      //   document.getElementById('imagi').click();
-                      // }, 1200);
+                      setTimeout(() => {
+                        document.getElementById('imagi').click();
+                      }, 1200);
                       // setTimeout(() => {
                       //   document.getElementById('imagi').click();
                       //   setscalee(false)
