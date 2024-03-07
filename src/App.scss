@@ -1,0 +1,89 @@
+*, *::after, *::before, .App {
+  box-sizing: border-box !important;
+  -webkit-tap-highlight-color: transparent;
+  margin: 0;
+  padding:0;
+}
+
+body {
+  // cursor: none;
+  background-color: #ffffff;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+
+
+
+.shuku {
+
+  &::before {
+    position: absolute;
+    content: '';
+    width: 7px;
+    height: 100%;
+    border-radius: 12px 0 0 12px;
+    background-color: #000;
+    top: 0;
+    left: 0;
+    z-index: 25;
+  }
+}
+
+.shade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  background-color: linear-gradient(to bottom, #CD9656, #603522);
+  background-image: linear-gradient(to bottom, #CD9656, #603522);
+  z-index: 20;
+}
+
+.image {
+  background-size: cover;
+  background-position: 50% 10%;
+  z-index: 10;
+
+
+  &::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: linear-gradient(to bottom, #ffffff00, #0000003f);
+    background-image: linear-gradient(to bottom, #ffffff00 50%, #0000009c 75%,  #000000da 100%);
+    top: 0;
+    left: 0;
+    z-index: 15;
+  }
+}
+
+
+.markings {
+  z-index: 15;
+}
+
+.no-scroll::-webkit-scrollbar {
+  display: none;
+}
+.no-scroll {
+  overflow: scroll !important;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.shadie {
+  // text-shadow: 4px 3px 10px rgba(0,0,0,0.35);
+  text-shadow: 3px 3px 9px rgba(0,0,0,0.65);
+
+}
+@media(max-width:767px) {
+  .shade {
+    height: 10px;
+  }
+}

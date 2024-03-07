@@ -1,0 +1,263 @@
+
+*, *::before, *::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+@font-face {
+    font-family: "Satoshi";
+    src: url("../Fonts/Satoshi-Black.otf"); 
+    font-weight: 900;
+}
+@font-face {
+    font-family: "Satoshi";
+    src: url("../Fonts/Satoshi-Bold.otf"); 
+    font-weight: 700;
+}
+@font-face {
+    font-family: "Satoshi";
+    src: url("../Fonts/Satoshi-Medium.otf"); 
+    font-weight: 600;
+}
+@font-face {
+    font-family: "Satoshi";
+    src: url("../Fonts/Satoshi-Regular.otf"); 
+    font-weight: 400;
+}
+@font-face {
+    font-family: "Satoshi";
+    src: url("../Fonts/Satoshi-Light.otf"); 
+    font-weight: 300;
+}
+@font-face {
+    font-family: "Rufina";
+    src: url("../Fonts/Emphatic-Regular.ttf"); 
+    font-weight: 600;
+}
+@font-face {
+    font-family: "Rufina";
+    src: url("../Fonts/Emphatic-Regular.ttf"); 
+    font-weight: 400;
+}
+
+body{
+    box-sizing: border-box;
+    position: relative;
+    margin: 0;
+    padding: 0;
+
+} 
+
+#btt {
+    transform:rotate(90deg);
+    position:fixed;
+    width: 40px;
+    right:10px;
+    top: 90%;
+    border: 1px solid  rgb(233, 8, 83);
+    border-radius: 50%;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+}
+
+
+
+
+nav {
+    text-align: left;
+}
+nav img {
+    cursor:pointer;
+}
+
+
+.grids h3 {
+    padding:5px;
+}
+.grids a {
+    padding:5px;
+}
+
+
+
+
+
+
+
+
+/*ASDFASDFASDFASDFASDFASDFASDFASDFASDFASDFASDFASDFASDFASDFASDFASDSFAASDFASDFASDFASDFADSF*/
+
+
+
+
+/* body {
+    box-sizing: border-box;
+    margin: 0;
+    font-family:'Fredoka', sans-serif;
+} */
+
+.head {
+    background-color: rgb(211, 211, 211);
+    display: flex;
+    padding: .7rem;
+    gap: 1rem;
+
+}
+
+.link {
+    background:none;
+    border: none;
+    text-decoration: none;
+    color:rgb(95, 95, 95);
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+.dropdown.active > .link, .link:hover {
+    color:black;
+    font-size: 1.0rem;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    left: 0;
+    top: calc(100% + .5rem);
+    background-color: rgb(199, 44, 78);
+    padding: 2rem 1.5em;
+    width:150px;
+    border-radius: .3rem;
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, .2);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-15px) ;
+    transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
+    
+}
+
+.dropdown.active > .link + .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0) ;
+    pointer-events: auto;
+}
+
+h3 {
+    font-size: .9em;
+}
+
+.information-grid a {
+    text-decoration: none;
+    color: rgb(75, 75, 75);
+    display:block;
+}
+ 
+.information-grid {
+    text-align: left;
+}
+.information-grid h1 {
+    text-align: left;
+    font-family:'Courier New', Courier, monospace;
+    margin:0;
+    padding:10px 0px;
+    cursor: pointer;
+}
+.information-grid h1:hover {
+    font-size: 1.2em;
+}
+
+
+
+
+.login-form > input {
+    margin-bottom:.5em;
+}
+
+/* .dropdown-menu {
+    background-color: rgb(199, 44, 78);
+    position:absolute;
+    top:0;
+    left:0;
+    padding:50px 20px;
+    transform:translateX(-100%);
+    height:345px;
+    transition:transform .5s ease-in-out;
+} */
+
+
+/*ASDFASDFASDFASDFASDFASDFASDFASDFASDFASDFASDFASDFASDFASDFASDFASDSFAASDFASDFASDFASDFADSF*/
+
+
+
+
+
+
+
+
+
+
+@media(max-width:760px) {
+    .about__cont {
+        display:flex;
+        justify-content: space-between;
+    }
+
+    .workings {
+        display:grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0px 0px;
+    }
+
+    .workings img {
+        width: 150px;
+        height:100px;
+    }
+    
+
+}
+
+
+@media(max-width:480px) {
+
+    .dropdown-menu {
+        height:180px;
+    }
+    header h1 {
+        margin:10px 0px 5px 0px;
+        padding:0;
+    }
+        
+    header button {
+        padding:9px 12px;
+        margin:5px 0px 60px 0px;
+    }
+
+
+    .doings {
+        display:flex !important;
+        flex-direction: column;
+    }
+
+    .workings img {
+        width: 100px;
+        height:75px;
+    }
+
+    .works p, .about p  {
+        width: 100%;
+        margin: auto;
+    }
+
+    footer {
+        font-size:.5em;
+    }
+}
